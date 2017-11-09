@@ -1,17 +1,27 @@
 package com.example.yvtc.yvtc2011110902;
 
+import android.content.Context;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.TextView;
 
 /**
  * Created by yvtc on 2017/11/9.
  */
 
 public class MyAdapter extends BaseAdapter {
+    Context context;
+    ZooInfo[] zooInfo;
+    public MyAdapter(Context context, ZooInfo[] zooInfo)
+    {
+        this.context = context;
+        this.zooInfo = zooInfo;
+    }
     @Override
     public int getCount() {
-        return 0;
+        return zooInfo.length;
     }
 
     @Override
@@ -26,6 +36,10 @@ public class MyAdapter extends BaseAdapter {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        return null;
+        LayoutInflater inflater = LayoutInflater.from(context);
+        View v = inflater.inflate(R.layout.myitem, null);
+        TextView tv = (TextView) v.findViewById(R.id.textView);
+        tv.setText(zooInfo[position].E_Name);
+        return v;
     }
 }
