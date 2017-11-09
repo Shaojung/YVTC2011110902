@@ -5,7 +5,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.squareup.picasso.Picasso;
 
 /**
  * Created by yvtc on 2017/11/9.
@@ -40,6 +43,9 @@ public class MyAdapter extends BaseAdapter {
         View v = inflater.inflate(R.layout.myitem, null);
         TextView tv = (TextView) v.findViewById(R.id.textView);
         tv.setText(zooInfo[position].E_Name);
+
+        ImageView img = (ImageView) v.findViewById(R.id.imageView2);
+        Picasso.with(context).load(zooInfo[position].E_Pic_URL).into(img);
         return v;
     }
 }
